@@ -1,15 +1,35 @@
-// driver.js
+// Add an event listener to wait for the CryptoJS script to load
+document.addEventListener('DOMContentLoaded', function () {
+  if (typeof CryptoJS === 'undefined') {
+    //console.error('CryptoJS not loaded');
+  } else {
+    // Attach your existing message event listener here
+    window.addEventListener("message", async function (event) {
+      const { origin, data: { key, params } } = event;
 
-document.addEventListener("DOMContentLoaded", function () {
-    const resultDiv = document.getElementById("result");
+      let result;
+      let error;
+      try {
+        result = await window.function(...params);
+      } catch (e) {
+        result = undefined;
+        try {
+          error = e.toString();
+        } catch (e) {
+          error = "Exception can't be stringified.";
+        }
+      }
 
-    // Predefined message and secret key
-    const message = 'hello';
-    const secretKey = 'secret';
+      const response = { key };
+      if (result !== undefined) {
+        // FIXME: Remove `type` once that's in staging
+        response.result = { value: result };
+      }
+      if (error !== undefined) {
+        response.error = error;
+      }
 
-    // Calculate the HMAC-SHA1 hash
-    calculateHmacSha1(message, secretKey).then((hashHex) => {
-        // Display the result in the "result" div
-        resultDiv.textContent = 'HMAC-SHA1 Result: ' + hashHex;
+      event.source.postMessage(response, "*");
     });
+  }
 });
