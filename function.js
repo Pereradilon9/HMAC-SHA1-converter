@@ -7,6 +7,6 @@ window.function = function (input, key) {
     return hexEncodedHash;
   }
   catch (error) {
-    return "Error loading CryptoJS: " + error; // Include the error message
+    return "Error loading CryptoJS: " + "bla"; // Include the error message
   }
 }
