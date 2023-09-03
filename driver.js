@@ -1,7 +1,7 @@
 // driver.js
 
 document.addEventListener("DOMContentLoaded", function () {
-    const resultTextarea = document.getElementById("result");
+    const resultDiv = document.getElementById("result");
 
     // Predefined message and secret key
     const message = 'hello';
@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Calculate the HMAC-SHA1 hash
     calculateHmacSha1(message, secretKey).then((hashHex) => {
-        resultTextarea.value = hashHex;
+        // Display the result in the "result" div
+        resultDiv.textContent = 'HMAC-SHA1 Result: ' + hashHex;
     });
 });
+
