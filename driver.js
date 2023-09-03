@@ -13,4 +13,3 @@ document.addEventListener("DOMContentLoaded", function () {
         resultDiv.textContent = 'HMAC-SHA1 Result: ' + hashHex;
     });
 });
-
