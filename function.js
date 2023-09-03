@@ -22,3 +22,6 @@ function calculateHmacSha1(message, secretKey) {
         return hashHex;
     });
 }
+
+export { calculateHmacSha1 }; // Export the function for use in driver.js
+
