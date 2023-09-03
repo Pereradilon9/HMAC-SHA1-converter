@@ -1,13 +1,19 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>HMAC-SHA1-Converter</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HMAC-SHA1 Hash Calculator</title>
 </head>
-
 <body>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
-  <script src="function.js"></script>
+    <div class="container">
+        <h1>HMAC-SHA1 Hash Calculator</h1>
+        <div class="result-container">
+            <label for="result">Result:</label>
+            <textarea id="result" readonly></textarea>
+        </div>
+    </div>
+    <script src="function.js"></script>
+    <script src="driver.js"></script>
 </body>
-
 </html>
